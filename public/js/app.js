@@ -13,6 +13,7 @@ class randomSoup {
         maxCycles: 1000,
         enableAudio: true,
         enableFullScreen: false,
+        enableFadeOut: false,
         fontFamilies: [
             'Arial',
             'Times',
@@ -131,6 +132,7 @@ class randomSoup {
         let fontFamily;
         let textShadow;
         let color;
+        let opacity;
 
         // values for new element
         char = this.randomString(1, this.settings.characters);
@@ -181,6 +183,15 @@ class randomSoup {
 
             // decrement counter
             this.counter--;
+        }
+
+        // fadeout effect
+        if (this.settings.enableFadeOut === true) {
+            var elementCount = document.getElementById(this.settings.containerElementId).childNodes.length;
+            document.getElementById(this.settings.containerElementId).childNodes.forEach(function(currentValue, currentIndex, listObj) {
+                opacity = 1 / elementCount * currentIndex;
+                currentValue.style.opacity = opacity.toPrecision(3);
+            });
         }
     }
 
