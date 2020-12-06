@@ -22,6 +22,7 @@
                 <input id="specialCharacters" type="text" value="π">
                 <label><input type="checkbox" id="enableAudio" value="1" checked>enableAudio</label>
                 <label><input type="checkbox" id="enableFullScreen" value="1" checked>enableFullScreen</label>
+                <label><input type="checkbox" id="enableRotation" value="1">enableRotation</label>
                 <label><input type="checkbox" id="enableFadeOut" value="1">enableFadeOut</label>
                 <button type="submit">Start</button>
             </form>
@@ -39,6 +40,7 @@
                     enableAudio: document.getElementById('enableAudio').checked,
                     enableFullScreen: document.getElementById('enableFullScreen').checked,
                     enableFadeOut: document.getElementById('enableFadeOut').checked,
+                    enableRotation: document.getElementById('enableRotation').checked,
                 });
             }
         </script>

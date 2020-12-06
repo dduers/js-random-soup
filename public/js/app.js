@@ -14,6 +14,7 @@ class randomSoup {
         enableAudio: true,
         enableFullScreen: false,
         enableFadeOut: false,
+        enableRotation: false,
         fontFamilies: [
             'Arial',
             'Times',
@@ -133,6 +134,7 @@ class randomSoup {
         let textShadow;
         let color;
         let opacity;
+        let rotate;
 
         // values for new element
         char = this.randomString(1, this.settings.characters);
@@ -140,6 +142,8 @@ class randomSoup {
         fontFamily = this.settings.fontFamilies[this.randomInteger(0, this.settings.fontFamilies.length - 1)];
         textShadow = this.settings.textShadows[this.randomInteger(0, this.settings.textShadows.length - 1)];
         color = this.settings.colors[this.randomInteger(0, this.settings.colors.length - 1)];
+
+        
         
         // overwrite in special cases ...
         if (this.randomInteger(0, this.settings.specialProbability) === 0) {
@@ -167,6 +171,11 @@ class randomSoup {
         element.style.color = '' + color;
         element.style.position = 'absolute';
         element.style.textShadow = textShadow;
+
+        if (this.settings.enableRotation === true) {
+            rotate = this.randomInteger(-180, 180);
+            element.style.transform = 'rotate(' + rotate + 'deg)';
+        }
 
         // append element to container
         document.getElementById(this.settings.containerElementId).append(element);
