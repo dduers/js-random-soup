@@ -1,4 +1,9 @@
+
 body {
     background-color: black;
     overflow: hidden;
+}
+
+span {
+    text-shadow: 2px 2px 8px #FFFFFF;
 }
