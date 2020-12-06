@@ -12,6 +12,7 @@ class randomSoup {
         sleepMilliseconds: 100,
         maxCycles: 1000,
         enableAudio: true,
+        enableFullScreen: false,
         fontFamilies: [
             'Arial',
             'Times',
@@ -82,9 +83,37 @@ class randomSoup {
         let containerElement = document.getElementById(this.settings.containerElementId);
         containerElement.innerHTML = '';
 
+        if (this.settings.enableFullScreen === true) {
+            this.openFullScreen();
+        }
+
         // draw cycle 
         setInterval(this.drawCycle.bind(this), this.settings.sleepMilliseconds);
     };
+
+
+    openFullScreen() {
+
+        let element = document.documentElement;
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.webkitRequestFullscreen) { /* Safari */
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { /* IE11 */
+            element.msRequestFullscreen();
+        }
+    }
+
+    closeFullscreen() {
+
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+    }
 
     /**
      * one draw cycle

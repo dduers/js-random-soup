@@ -7,14 +7,20 @@
     </head>
     <body>
         <div id="randomSoupContainer">
-            <form>
+            <form method="GET" action="" onsubmit="return startRandomSoup()">
                 <label>sleepMilliseconds</label>
-                <input id="sleepMilliseconds" type="number" min="10" max="1000">
+                <input id="sleepMilliseconds" type="number" min="10" max="1000" value="20">
                 <label>maxCycles</label>
-                <input id="maxCycles" type="number" min="1" max="10000">
+                <input id="maxCycles" type="number" min="1" max="10000" value="2000">
                 <label>specialProbability</label>
-                <input id="specialProbability" type="number" min="500" max="1000000">
-                <button onclick="startRandomSoup()">Start</button>
+                <input id="specialProbability" type="number" min="500" max="1000000" value="100000">
+                <label>specialCharacters</label>
+                <input id="specialCharacters" value="π">
+                <label>enableAudio</label>
+                <input type="checkbox" id="enableAudio" value="1" checked>
+                <label>enableFullScreen</label>
+                <input type="checkbox" id="enableFullScreen" value="1" checked>
+                <button type="submit">Start</button>
             </form>
         </div>
         <script src="js/app.js"></script>
@@ -24,6 +30,9 @@
                     sleepMilliseconds: document.getElementById('sleepMilliseconds').value,
                     maxCycles: document.getElementById('maxCycles').value,
                     specialProbability: document.getElementById('specialProbability').value,
+                    specialCharacters: document.getElementById('specialCharacters').value,
+                    enableAudio: document.getElementById('enableAudio').checked,
+                    enableFullScreen: document.getElementById('enableFullScreen').checked,
                 });
             }
         </script>
