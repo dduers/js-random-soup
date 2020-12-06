@@ -135,8 +135,6 @@ class randomSoup {
         // values for new element
         char = this.randomString(1, this.settings.characters);
         fontSize = this.randomInteger(12, 48);
-        marginTop = this.randomInteger(0, window.innerHeight);
-        marginLeft = this.randomInteger(0, window.innerWidth - fontSize);
         fontFamily = this.settings.fontFamilies[this.randomInteger(0, this.settings.fontFamilies.length - 1)];
         textShadow = this.settings.textShadows[this.randomInteger(0, this.settings.textShadows.length - 1)];
         color = this.settings.colors[this.randomInteger(0, this.settings.colors.length - 1)];
@@ -145,19 +143,16 @@ class randomSoup {
         if (this.randomInteger(0, this.settings.specialProbability) === 0) {
             char = this.randomString(1, this.settings.specialCharacters);
             fontSize = 280;
-            marginLeft = this.randomInteger(0, window.innerWidth - fontSize);
             textShadow = this.settings.specialTextShadows[this.randomInteger(0, this.settings.specialTextShadows.length - 1)];
             color = this.settings.specialColors[this.randomInteger(0, this.settings.specialColors.length - 1)];
-
-            if (this.settings.enableAudio === true) {
-                /*
-                var sound = new Howl({
-                    src: [this.settings.specialAudio[this.randomInteger(0, this.settings.specialAudio.length - 1)]]
-                });*/
+            if (this.settings.enableAudio === true && this.settings.specialAudio.length > 0) {
                 var sound = new Audio(this.settings.specialAudio[this.randomInteger(0, this.settings.specialAudio.length - 1)]);
                 sound.play();
             }
         }
+
+        marginTop = this.randomInteger(0, window.innerHeight - fontSize);
+        marginLeft = this.randomInteger(0, window.innerWidth - fontSize);
 
         // set element content
         element.textContent = char;

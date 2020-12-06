@@ -7,6 +7,7 @@
     </head>
     <body>
         <div id="randomSoupContainer">
+            <h1>Random Soup</h1>
             <form method="GET" action="" onsubmit="return startRandomSoup()">
                 <label>sleepMilliseconds</label>
                 <input id="sleepMilliseconds" type="number" min="10" max="1000" value="20">
@@ -15,11 +16,9 @@
                 <label>specialProbability</label>
                 <input id="specialProbability" type="number" min="500" max="1000000" value="100000">
                 <label>specialCharacters</label>
-                <input id="specialCharacters" value="π">
-                <label>enableAudio</label>
-                <input type="checkbox" id="enableAudio" value="1" checked>
-                <label>enableFullScreen</label>
-                <input type="checkbox" id="enableFullScreen" value="1" checked>
+                <input id="specialCharacters" type="text" value="π">
+                <label><input type="checkbox" id="enableAudio" value="1" checked>enableAudio</label>
+                <label><input type="checkbox" id="enableFullScreen" value="1" checked>enableFullScreen</label>
                 <button type="submit">Start</button>
             </form>
         </div>
