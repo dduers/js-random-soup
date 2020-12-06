@@ -8,13 +8,15 @@
     <body>
         <div id="randomSoupContainer">
             <h1>Random Soup</h1>
-            <form method="GET" action="" onsubmit="return startRandomSoup()">
+            <form method="GET" action="" onsubmit="startRandomSoup()">
                 <label>sleepMilliseconds</label>
                 <input id="sleepMilliseconds" type="number" min="10" max="1000" value="20">
                 <label>maxCycles</label>
                 <input id="maxCycles" type="number" min="1" max="10000" value="2000">
+                <label>characters</label>
+                <input id="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
                 <label>specialProbability</label>
-                <input id="specialProbability" type="number" min="500" max="1000000" value="100000">
+                <input id="specialProbability" type="number" min="500" max="1000000" value="20000">
                 <label>specialCharacters</label>
                 <input id="specialCharacters" type="text" value="π">
                 <label><input type="checkbox" id="enableAudio" value="1" checked>enableAudio</label>
@@ -28,6 +30,7 @@
                 new randomSoup({
                     sleepMilliseconds: document.getElementById('sleepMilliseconds').value,
                     maxCycles: document.getElementById('maxCycles').value,
+                    characters: document.getElementById('characters').value,
                     specialProbability: document.getElementById('specialProbability').value,
                     specialCharacters: document.getElementById('specialCharacters').value,
                     enableAudio: document.getElementById('enableAudio').checked,
