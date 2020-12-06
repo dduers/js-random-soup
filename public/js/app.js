@@ -14,6 +14,7 @@ class randomSoup {
         enableAudio: true,
         enableFullScreen: false,
         enableFadeOut: false,
+        enableFadeOutRotation: false,
         enableRotation: false,
         fontFamilies: [
             'Arial',
@@ -196,10 +197,15 @@ class randomSoup {
 
         // fadeout effect
         if (this.settings.enableFadeOut === true) {
-            var elementCount = document.getElementById(this.settings.containerElementId).childNodes.length;
-            document.getElementById(this.settings.containerElementId).childNodes.forEach(function(currentValue, currentIndex, listObj) {
+            let elementCount = document.getElementById(this.settings.containerElementId).childNodes.length;
+            let self = this;
+            document.getElementById(this.settings.containerElementId).childNodes.forEach(function(currentElement, currentIndex, listObj) {
                 opacity = 1 / elementCount * currentIndex;
-                currentValue.style.opacity = opacity.toPrecision(3);
+                opacity = opacity.toPrecision(3);
+                currentElement.style.opacity = opacity;
+                if (self.settings.enableFadeOutRotation === true) {
+                    currentElement.style.transform = 'rotate(' + Math.ceil(180 + (opacity * 100)) + 'deg)';
+                }
             });
         }
     }

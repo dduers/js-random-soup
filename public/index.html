@@ -24,6 +24,7 @@
                 <label><input type="checkbox" id="enableFullScreen" value="1" checked>enableFullScreen</label>
                 <label><input type="checkbox" id="enableRotation" value="1">enableRotation</label>
                 <label><input type="checkbox" id="enableFadeOut" value="1">enableFadeOut</label>
+                <label><input type="checkbox" id="enableFadeOutRotation" value="1">enableFadeOutRotation</label>
                 <button type="submit">Start</button>
             </form>
         </div>
@@ -41,6 +42,7 @@
                     enableFullScreen: document.getElementById('enableFullScreen').checked,
                     enableFadeOut: document.getElementById('enableFadeOut').checked,
                     enableRotation: document.getElementById('enableRotation').checked,
+                    enableFadeOutRotation: document.getElementById('enableFadeOutRotation').checked,
                 });
             }
         </script>
