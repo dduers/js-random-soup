@@ -2,11 +2,30 @@
 <html>
     <head>
         <title>The Matrix Playground</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
         <meta charset="UTF-8">
     </head>
     <body>
-        <div id="randomSoupContainer"></div>
-        <script src="app.js"></script>
+        <div id="randomSoupContainer">
+            <form>
+                <label>sleepMilliseconds</label>
+                <input id="sleepMilliseconds" type="number" min="10" max="1000">
+                <label>maxCycles</label>
+                <input id="maxCycles" type="number" min="1" max="10000">
+                <label>specialProbability</label>
+                <input id="specialProbability" type="number" min="500" max="1000000">
+                <button onclick="startRandomSoup()">Start</button>
+            </form>
+        </div>
+        <script src="js/app.js"></script>
+        <script>
+            function startRandomSoup() {
+                new randomSoup({
+                    sleepMilliseconds: document.getElementById('sleepMilliseconds').value,
+                    maxCycles: document.getElementById('maxCycles').value,
+                    specialProbability: document.getElementById('specialProbability').value,
+                });
+            }
+        </script>
     </body>
 </html>

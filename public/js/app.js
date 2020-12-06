@@ -8,7 +8,10 @@ class randomSoup {
      * default values
      */
     defaults = {
+        containerElementId: 'randomSoupContainer',
         sleepMilliseconds: 100,
+        maxCycles: 1000,
+        enableAudio: true,
         fontFamilies: [
             'Arial',
             'Times',
@@ -23,6 +26,7 @@ class randomSoup {
             '#999999',
             '#666666',
             '#333333',
+            'green',
         ],
         textShadows: [
             '1px 1px 2px #FFFFFF',
@@ -33,6 +37,8 @@ class randomSoup {
             '1px 1px 2px #999999',
             '1px 1px 2px #666666',
             '1px 1px 2px #333333',
+            '1px 1px 2px green',
+            'none',
             'none',
             'none',
             'none',
@@ -42,19 +48,18 @@ class randomSoup {
             'none',
             'none',
         ],
+        specialProbability: 100000,
         specialCharacters: '*',
         specialColors: [
             'red',
-            'gold',
         ],
         specialTextShadows: [
             '1px 1px 2px red',
-            '1px 1px 2px gold',
-            'none',
             'none',
         ],
-        containerElementId: 'randomSoupContainer',
-        maxCycles: 1000,
+        specialAudio: [
+            'audio/1.mp3',
+        ],
     };
 
     /**
@@ -72,6 +77,10 @@ class randomSoup {
 
         // merge options and defaults to settings
         this.settings = Object.assign({}, this.defaults, options);
+
+        // empty the dom container element
+        let containerElement = document.getElementById(this.settings.containerElementId);
+        containerElement.innerHTML = '';
 
         // draw cycle 
         setInterval(this.drawCycle.bind(this), this.settings.sleepMilliseconds);
@@ -98,17 +107,27 @@ class randomSoup {
         char = this.randomString(1, this.settings.characters);
         fontSize = this.randomInteger(12, 48);
         marginTop = this.randomInteger(0, window.innerHeight);
-        marginLeft = this.randomInteger(0, window.innerWidth);
+        marginLeft = this.randomInteger(0, window.innerWidth - fontSize);
         fontFamily = this.settings.fontFamilies[this.randomInteger(0, this.settings.fontFamilies.length - 1)];
         textShadow = this.settings.textShadows[this.randomInteger(0, this.settings.textShadows.length - 1)];
         color = this.settings.colors[this.randomInteger(0, this.settings.colors.length - 1)];
         
         // overwrite in special cases ...
-        if (this.randomInteger(0, this.maxCycles) === this.maxCycles) {
+        if (this.randomInteger(0, this.settings.specialProbability) === 0) {
             char = this.randomString(1, this.settings.specialCharacters);
-            fontSize = 200;
+            fontSize = 280;
+            marginLeft = this.randomInteger(0, window.innerWidth - fontSize);
             textShadow = this.settings.specialTextShadows[this.randomInteger(0, this.settings.specialTextShadows.length - 1)];
             color = this.settings.specialColors[this.randomInteger(0, this.settings.specialColors.length - 1)];
+
+            if (this.settings.enableAudio === true) {
+                /*
+                var sound = new Howl({
+                    src: [this.settings.specialAudio[this.randomInteger(0, this.settings.specialAudio.length - 1)]]
+                });*/
+                var sound = new Audio(this.settings.specialAudio[this.randomInteger(0, this.settings.specialAudio.length - 1)]);
+                sound.play();
+            }
         }
 
         // set element content
@@ -118,7 +137,7 @@ class randomSoup {
         element.style.marginTop = '' + marginTop + 'px';
         element.style.marginLeft = '' + marginLeft + 'px';
         element.style.fontSize = '' + fontSize + 'px';
-        element.style.fontFamily = '' + fontFamily + 'px';
+        element.style.fontFamily = '' + fontFamily;
         element.style.color = '' + color;
         element.style.position = 'absolute';
         element.style.textShadow = textShadow;
@@ -172,11 +191,3 @@ class randomSoup {
         return Math.floor(Math.random() * (max - min + 1)) + min; 
     }
 }
-
-/**
- * create random soup instance with custom options
- */
-let randomSoup1 = new randomSoup({
-    sleepMilliseconds: 1000,
-    maxCycles: 3,
-});

@@ -1,0 +1,12 @@
+
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+button {
+    padding:10px;
+    background-color:green;
+    border:1px solid darkgreen;
+    color:white;
+}
