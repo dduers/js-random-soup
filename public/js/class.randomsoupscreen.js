@@ -204,6 +204,7 @@ class randomSoupScreen {
 
             // remove oldest element
             element = document.getElementsByTagName('span')[0];
+            //element = document.getElementById(this.stripeContainerElementId).childNodes[0];
             element.remove();
 
             // decrement counter

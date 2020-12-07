@@ -11,15 +11,15 @@
             <h1>Random Soup (Stripe)</h1>
             <form method="GET" action="run.html">
                 <label>stripeCount</label>
-                <input name="stripeCount" type="number" min="10" max="100" value="100">
+                <input name="stripeCount" id="stripeCount1" type="number" min="10" max="100" value="100">
                 <label>sleepMilliseconds (per Stripe)</label>
                 <input name="sleepMilliseconds" type="number" min="10" max="1000" value="20">
                 <label>maxCycles (per Stripe)</label>
-                <input name="maxCycles" type="number" min="1" max="10000" value="100">
+                <input name="maxCycles" id="maxCycles1" type="number" min="1" max="10000" value="100">
                 <label>characters (per Stripe)</label>
                 <input name="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
                 <label>specialProbability (per Stripe)</label>
-                <input name="specialProbability" type="number" min="500" max="1000000" value="20000">
+                <input name="specialProbability" type="number" min="500" max="1000000" value="1000000">
                 <label>specialCharacters</label>
                 <input name="specialCharacters" type="text" value="π">
                 <ul>
@@ -37,7 +37,7 @@
                 <label>sleepMilliseconds</label>
                 <input name="sleepMilliseconds" type="number" min="10" max="1000" value="20">
                 <label>maxCycles</label>
-                <input name="maxCycles" type="number" min="1" max="10000" value="100">
+                <input name="maxCycles" id="maxCycles2" type="number" min="1" max="10000" value="100">
                 <label>characters</label>
                 <input name="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
                 <label>specialProbability</label>
@@ -55,5 +55,6 @@
                 <button type="submit">Start</button>
             </form>
         </div>
+        <script src="js/index.js"></script> 
     </body>
 </html>
