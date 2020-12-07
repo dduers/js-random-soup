@@ -1,5 +1,5 @@
 /**
- * RANDOM SOUP CLASS
+ * RANDOM SOUP CLASS (SCREEN)
  * create a funny matrix like random soup of characters in different colors and forms.
  */
 class randomSoupScreen {
@@ -109,8 +109,14 @@ class randomSoupScreen {
      */
     settings = {};
 
+    /**
+     * utilites class
+     */
     utilities = null;
 
+    /**
+     * screen element counter
+     */
     counter = 0;
 
     /**

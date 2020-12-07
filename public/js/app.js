@@ -1,3 +1,6 @@
+/**
+ * start random soup screen
+ */
 function startRandomSoupScreen() 
 {
     let utilities = new randomUtilities();
@@ -22,6 +25,9 @@ function startRandomSoupScreen()
     });
 }
 
+/**
+ * start random soup stripes
+ */
 function startRandomSoupStripe() 
 {
     let utilities = new randomUtilities();
@@ -41,6 +47,9 @@ function startRandomSoupStripe()
             stripeHeight: utilities.randomInteger(180, window.innerHeight),
             stripeLeft: utilities.randomInteger(0, window.innerWidth),
             sleepMilliseconds: getQueryVariable('sleepMilliseconds'),
+            fontSizes: [
+                utilities.randomInteger(16, 24),
+            ],
             maxCycles: getQueryVariable('maxCycles'),
             characters: getQueryVariable('characters'),
             specialProbability: getQueryVariable('specialProbability'),
@@ -53,6 +62,10 @@ function startRandomSoupStripe()
     }
 }
 
+/**
+ * get query vars
+ * @param {*} variable query variable name
+ */
 function getQueryVariable(variable)
 {
     var query = window.location.search.substring(1);
@@ -65,9 +78,10 @@ function getQueryVariable(variable)
     return false;
 }
 
-
+/**
+ * start soup
+ */
 switch (getQueryVariable('type')) {
-
     case 'screen':
         startRandomSoupScreen();
         break;

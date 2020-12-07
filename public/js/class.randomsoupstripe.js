@@ -1,5 +1,5 @@
 /**
- * RANDOM SOUP CLASS
+ * RANDOM SOUP CLASS (STRIPE)
  * create a funny matrix like random soup of characters in different colors and forms.
  */
 class randomSoupStripe {
@@ -19,8 +19,6 @@ class randomSoupStripe {
         stripeLeft: 50,
         stripeHeight: window.innerHeight / 2,
         fontFamilies: [
-            //'Arial',
-            //'Times',
             'Courier',
         ],
         fontSizes: [
@@ -86,6 +84,9 @@ class randomSoupStripe {
      */
     stripeContainerElementId;
 
+    /**
+     * stripe element counter
+     */
     counter = 0;
 
     /**
@@ -107,18 +108,17 @@ class randomSoupStripe {
         setInterval(this.drawCycle.bind(this), this.settings.sleepMilliseconds);
     };
 
+    /**
+     * create stripe container
+     */
     drawStripeContainer() {
-
         let elementId = 'stripe-' + this.utilities.randomString(8);
         let element = document.createElement('div');
         element.style.width = '30px';
         element.style.left = this.settings.stripeLeft + 'px';
         element.style.position = 'absolute';
-        
         element.setAttribute('id', elementId);
-
-        this.stripeContainerElementId = elementId; 
-        //this.settings.stripeHeight = this.utilities.randomInteger(this.settings.stripeMinHeight, window.innerHeight);
+        this.stripeContainerElementId = elementId;
 
         // append stripe container to container
         document.getElementById(this.settings.containerElementId).append(element);
@@ -136,7 +136,6 @@ class randomSoupStripe {
         let char;
         let fontSize;
         let top;
-        //let left;
         let fontFamily;
         let textShadow;
         let color;
@@ -163,14 +162,12 @@ class randomSoupStripe {
         }
 
         top = this.utilities.randomInteger(this.settings.stripeTop, this.settings.stripeHeight);
-        //left = this.settings.stripeLeft;
 
         // set element content
         element.textContent = char;
 
         // set dom element style
         element.style.top = '' + top + 'px';
-        //element.style.left = '' + left + 'px';
         element.style.fontSize = '' + fontSize + 'px';
         element.style.fontFamily = '' + fontFamily;
         element.style.color = '' + color;
@@ -189,7 +186,6 @@ class randomSoupStripe {
         this.counter++;
 
         // begin cleaning up, when max cycles are reached
-        
         if (this.counter > this.settings.maxCycles) {
 
             // remove oldest element
