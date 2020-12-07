@@ -13,7 +13,7 @@
                 <label>sleepMilliseconds</label>
                 <input id="sleepMilliseconds" type="number" min="10" max="1000" value="20">
                 <label>maxCycles</label>
-                <input id="maxCycles" type="number" min="1" max="10000" value="2000">
+                <input id="maxCycles" type="number" min="1" max="10000" value="100">
                 <label>characters</label>
                 <input id="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
                 <label>specialProbability</label>
@@ -28,23 +28,9 @@
                 <button type="submit">Start</button>
             </form>
         </div>
-        <script src="js/app.js"></script>
-        <script>
-            document.getElementById('maxCycles').value = window.innerHeight;
-            function startRandomSoup() {
-                new randomSoup({
-                    sleepMilliseconds: document.getElementById('sleepMilliseconds').value,
-                    maxCycles: document.getElementById('maxCycles').value,
-                    characters: document.getElementById('characters').value,
-                    specialProbability: document.getElementById('specialProbability').value,
-                    specialCharacters: document.getElementById('specialCharacters').value,
-                    enableAudio: document.getElementById('enableAudio').checked,
-                    enableFullScreen: document.getElementById('enableFullScreen').checked,
-                    enableFadeOut: document.getElementById('enableFadeOut').checked,
-                    enableRotation: document.getElementById('enableRotation').checked,
-                    enableFadeOutRotation: document.getElementById('enableFadeOutRotation').checked,
-                });
-            }
-        </script>
+        <script src="js/class.randomUtilities.js"></script>
+        <script src="js/class.randomsoupscreen.js"></script>
+        <script src="js/class.randomsoupstripe.js"></script>
+        <script src="js/app.js"></script> 
     </body>
 </html>
