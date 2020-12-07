@@ -12,56 +12,19 @@ class randomSoupStripe {
         sleepMilliseconds: 10,
         maxCycles: 100,
         enableAudio: true,
-        enableFullScreen: false,
-        enableFadeOut: true,
+        enableFadeOut: false,
         enableFadeOutRotation: false,
         enableRotation: false,
         stripeTop: 0,
         stripeLeft: 50,
         stripeHeight: window.innerHeight / 2,
         fontFamilies: [
-            'Arial',
-            'Times',
+            //'Arial',
+            //'Times',
             'Courier',
         ],
         fontSizes: [
-            /*12,
-            13,
-            14,
-            15,*/
             16,
-            /*17,
-            18,
-            19,
-            20,
-            21,
-            22,
-            23,
-            24,
-            25,
-            26,
-            27,
-            28,
-            29,
-            30,
-            31,
-            32,
-            33,
-            34,
-            35,
-            36,
-            37,
-            38,
-            39,
-            40,
-            41,
-            42,
-            43,
-            44,
-            45,
-            46,
-            47,
-            48,*/
         ],
         characters: '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦',
         colors: [
@@ -134,12 +97,10 @@ class randomSoupStripe {
         // merge options and defaults to settings
         this.settings = Object.assign({}, this.defaults, options);
 
-        if (this.settings.enableFullScreen === true) {
-            this.utilities.openFullScreen();
-        }
-
+        // utilities class
         this.utilities = new randomUtilities();
 
+        // draw stripe container
         this.drawStripeContainer();
 
         // draw cycle 

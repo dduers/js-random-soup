@@ -12,7 +12,6 @@ class randomSoupScreen {
         sleepMilliseconds: 100,
         maxCycles: 1000,
         enableAudio: true,
-        enableFullScreen: false,
         enableFadeOut: false,
         enableFadeOutRotation: false,
         enableRotation: false,
@@ -110,6 +109,8 @@ class randomSoupScreen {
      */
     settings = {};
 
+    utilities = null;
+
     counter = 0;
 
     /**
@@ -121,41 +122,12 @@ class randomSoupScreen {
         // merge options and defaults to settings
         this.settings = Object.assign({}, this.defaults, options);
 
-        // empty the dom container element
-        let containerElement = document.getElementById(this.settings.containerElementId);
-        containerElement.innerHTML = '';
-
-        if (this.settings.enableFullScreen === true) {
-            this.openFullScreen();
-        }
+        // utilites class
+        this.utilities = new randomUtilities();
 
         // draw cycle 
         setInterval(this.drawCycle.bind(this), this.settings.sleepMilliseconds);
     };
-
-
-    openFullScreen() {
-
-        let element = document.documentElement;
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.webkitRequestFullscreen) { /* Safari */
-            element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) { /* IE11 */
-            element.msRequestFullscreen();
-        }
-    }
-
-    closeFullscreen() {
-
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) { /* Safari */
-            document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { /* IE11 */
-            document.msExitFullscreen();
-        }
-    }
 
     /**
      * one draw cycle
@@ -177,28 +149,26 @@ class randomSoupScreen {
         let rotate;
 
         // values for new element
-        char = this.randomString(1, this.settings.characters);
-        fontSize = this.settings.fontSizes[this.randomInteger(0, this.settings.fontSizes.length - 1)];
-        fontFamily = this.settings.fontFamilies[this.randomInteger(0, this.settings.fontFamilies.length - 1)];
-        textShadow = this.settings.textShadows[this.randomInteger(0, this.settings.textShadows.length - 1)];
-        color = this.settings.colors[this.randomInteger(0, this.settings.colors.length - 1)];
+        char = this.utilities.randomString(1, this.settings.characters);
+        fontSize = this.settings.fontSizes[this.utilities.randomInteger(0, this.settings.fontSizes.length - 1)];
+        fontFamily = this.settings.fontFamilies[this.utilities.randomInteger(0, this.settings.fontFamilies.length - 1)];
+        textShadow = this.settings.textShadows[this.utilities.randomInteger(0, this.settings.textShadows.length - 1)];
+        color = this.settings.colors[this.utilities.randomInteger(0, this.settings.colors.length - 1)];
 
-        
-        
         // overwrite in special cases ...
-        if (this.randomInteger(0, this.settings.specialProbability) === 0) {
-            char = this.randomString(1, this.settings.specialCharacters);
+        if (this.utilities.randomInteger(0, this.settings.specialProbability) === 0) {
+            char = this.utilities.randomString(1, this.settings.specialCharacters);
             fontSize = 280;
-            textShadow = this.settings.specialTextShadows[this.randomInteger(0, this.settings.specialTextShadows.length - 1)];
-            color = this.settings.specialColors[this.randomInteger(0, this.settings.specialColors.length - 1)];
+            textShadow = this.settings.specialTextShadows[this.utilities.randomInteger(0, this.settings.specialTextShadows.length - 1)];
+            color = this.settings.specialColors[this.utilities.randomInteger(0, this.settings.specialColors.length - 1)];
             if (this.settings.enableAudio === true && this.settings.specialAudio.length > 0) {
-                var sound = new Audio(this.settings.specialAudio[this.randomInteger(0, this.settings.specialAudio.length - 1)]);
+                var sound = new Audio(this.settings.specialAudio[this.utilities.randomInteger(0, this.settings.specialAudio.length - 1)]);
                 sound.play();
             }
         }
 
-        top = this.randomInteger(0, window.innerHeight - fontSize);
-        left = this.randomInteger(0, window.innerWidth - fontSize);
+        top = this.utilities.randomInteger(0, window.innerHeight - fontSize);
+        left = this.utilities.randomInteger(0, window.innerWidth - fontSize);
 
         // set element content
         element.textContent = char;
@@ -213,7 +183,7 @@ class randomSoupScreen {
         element.style.textShadow = textShadow;
 
         if (this.settings.enableRotation === true) {
-            rotate = this.randomInteger(-180, 180);
+            rotate = this.utilities.randomInteger(-180, 180);
             element.style.transform = 'rotate(' + rotate + 'deg)';
         }
 
@@ -247,36 +217,5 @@ class randomSoupScreen {
                 }
             });
         }
-    }
-
-    /**
-     * generates random string
-     * @param {*} size number of characters in the result string
-     * @param {*} chars characters to include to build random string
-     */
-    randomString(size=1, chars='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') {
-
-        let result = '';
-        let charsLength = chars.length;
-        let i = 0;
-
-        for (i = 0; i < size; i++) {
-            result += chars[this.randomInteger(0, charsLength - 1)];
-        }
-
-        return result;
-    };
-
-    /**
-     * create random integer
-     * @param {*} min minimum value
-     * @param {*} max maximum value
-     */
-    randomInteger(min, max) {
-
-        min = Math.ceil(min);
-        max = Math.floor(max);
-
-        return Math.floor(Math.random() * (max - min + 1)) + min; 
     }
 }
