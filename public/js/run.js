@@ -43,23 +43,35 @@ function startRandomSoupStripe()
     }*/
 
     for (i = 0; i < stripeCount; i++) {
-        stripes[i] = new randomSoupStripe({
-            stripeHeight: utilities.randomInteger(180, window.innerHeight),
-            stripeLeft: utilities.randomInteger(0, window.innerWidth),
-            sleepMilliseconds: getQueryVariable('sleepMilliseconds'),
-            fontSizes: [
-                utilities.randomInteger(16, 24),
-            ],
-            maxCycles: getQueryVariable('maxCycles'),
-            characters: decodeURIComponent(getQueryVariable('characters')),
-            specialProbability: getQueryVariable('specialProbability'),
-            specialCharacters: decodeURIComponent(getQueryVariable('specialCharacters')),
-            enableAudio: getQueryVariable('enableAudio') == 1 ? true : false,
-            enableFadeOut: getQueryVariable('enableFadeOut') == 1 ? true : false,
-            enableRotation: getQueryVariable('enableRotation') == 1 ? true : false,
-            enableFadeOutRotation: getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
-        });   
+        stripes[i] = createStripe();  
     }
+
+    setInterval(function() {
+        stripes.shift().destroy();
+        stripes.push(createStripe());
+    }, 5000)
+}
+
+function createStripe() {
+    let utilities = new randomUtilities();
+    let stripe = new randomSoupStripe({
+        stripeHeight: utilities.randomInteger(180, window.innerHeight),
+        stripeLeft: utilities.randomInteger(0, window.innerWidth),
+        sleepMilliseconds: getQueryVariable('sleepMilliseconds'),
+        fontSizes: [
+            utilities.randomInteger(16, 24),
+        ],
+        maxCycles: getQueryVariable('maxCycles'),
+        characters: decodeURIComponent(getQueryVariable('characters')),
+        specialProbability: getQueryVariable('specialProbability'),
+        specialCharacters: decodeURIComponent(getQueryVariable('specialCharacters')),
+        enableAudio: getQueryVariable('enableAudio') == 1 ? true : false,
+        enableFadeOut: getQueryVariable('enableFadeOut') == 1 ? true : false,
+        enableRotation: getQueryVariable('enableRotation') == 1 ? true : false,
+        enableFadeOutRotation: getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
+    });
+
+    return stripe;
 }
 
 /**

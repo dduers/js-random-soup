@@ -89,6 +89,8 @@ class randomSoupStripe {
      */
     counter = 0;
 
+    interval = null;
+
     /**
      * class constructor
      * @param {*} options overwrite default settings
@@ -105,7 +107,9 @@ class randomSoupStripe {
         this.drawStripeContainer();
 
         // draw cycle 
-        setInterval(this.drawCycle.bind(this), this.settings.sleepMilliseconds);
+        this.interval = setInterval(this.drawCycle.bind(this), this.settings.sleepMilliseconds);
+
+        //myVar = setInterval(() => {console.log('bop'), 1000);
     };
 
     /**
@@ -122,6 +126,37 @@ class randomSoupStripe {
 
         // append stripe container to container
         document.getElementById(this.settings.containerElementId).append(element);
+    };
+
+    /**
+     * destroy stripe
+     */
+    destroy() {
+
+        // the stripe container element
+        let element = document.getElementById(this.stripeContainerElementId);
+
+        // clear interval on stripe container element
+        clearInterval(this.interval);
+
+        // remove child elements
+        /*
+        let self = this;
+        document.getElementById(this.stripeContainerElementId).childNodes.forEach(function(currentElement, currentIndex, listObj) {
+
+            
+            let opacity = 1.00;
+            
+            while (opacity > 0) {
+                opacity -= 0.01;
+                currentElement.style.opacity = opacity;
+                self.utilities.sleep(100);
+            }
+        });
+        */
+
+        // remove stripe container element
+        element.remove();
     };
 
     /**
