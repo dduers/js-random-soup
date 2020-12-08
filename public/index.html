@@ -8,20 +8,36 @@
     </head>
     <body>
         <div id="randomSoupContainer">
-            <h1>Random Soup (Stripe)</h1>
+            <h1>Parameters</h1>
             <form method="GET" action="run.html">
-                <label>stripeCount</label>
+                <label>Mode</label>
+                <select id="type" name="type">
+                    <option value="stripe" selected>Stripes ("The Matrix" Style)</option>
+                    <option value="screen">Screen (Freestyle)</option>
+                </select>
+                <label>Count of stripes</label>
+                <p>Only applied in stripe mode</p>
                 <input name="stripeCount" id="stripeCount1" type="number" min="10" max="255" value="100">
-                <label>sleepMilliseconds (per Stripe)</label>
+                <label>Milliseconds between drawing characters</label>
+                <p>In stripe mode, this is per stripe</p>
                 <input name="sleepMilliseconds" type="number" min="10" max="1000" value="20">
-                <label>maxCycles (per Stripe)</label>
+                <label>Maximum character count</label>
+                <p>In stripe mode, this is per stripe</p>
                 <input name="maxCycles" id="maxCycles1" type="number" min="1" max="10000" value="100">
-                <label>characters (per Stripe)</label>
+                <label>Normal characters</label>
                 <input name="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
-                <label>specialProbability (per Stripe)</label>
-                <input name="specialProbability" type="number" min="500" max="1000000" value="1000000">
-                <label>specialCharacters</label>
+                <label>Probability of errors in the Matrix</label>
+                <p>In stripe mode, this is per stripe</p>
+                <select name="specialProbability">
+                    <option value="1000000">1 : 1'000'000 (World in peace)</option>
+                    <option value="100000" selected>1 : 100'000 (Winning the lottery)</option>
+                    <option value="10000">1 : 10'000 (Rainy days)</option>
+                    <option value="1000">1 : 1'000 (Cheap pizza)</option>
+                    <option value="100">1 : 100 (Bag of rice falling somewhere)</option>
+                </select>
+                <label>Error characters</label>
                 <input name="specialCharacters" type="text" value="π">
+                <p>Options</p>
                 <ul>
                     <li><label><input name="enableAudio" type="checkbox" value="1" checked>enableAudio</label></li>
                     <li><label><input name="enableFullScreen" type="checkbox" value="1" checked>enableFullScreen</label></li>
@@ -29,29 +45,6 @@
                     <li><label><input name="enableRotation" type="checkbox" value="1">enableRotation</label></li>
                     <li><label><input name="enableFadeOutRotation" type="checkbox" value="1">enableFadeOutRotation</label></li>
                 </ul>
-                <input name="type" type="hidden" value="stripe">
-                <button type="submit">Start</button>
-            </form>
-            <h1>Random Soup (Screen)</h1>
-            <form method="GET" action="run.html">
-                <label>sleepMilliseconds</label>
-                <input name="sleepMilliseconds" type="number" min="10" max="1000" value="20">
-                <label>maxCycles</label>
-                <input name="maxCycles" id="maxCycles2" type="number" min="1" max="10000" value="100">
-                <label>characters</label>
-                <input name="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
-                <label>specialProbability</label>
-                <input name="specialProbability" type="number" min="500" max="1000000" value="20000">
-                <label>specialCharacters</label>
-                <input name="specialCharacters" type="text" value="π">
-                <ul>
-                    <li><label><input name="enableAudio" type="checkbox" value="1" checked>enableAudio</label></li>
-                    <li><label><input name="enableFullScreen" type="checkbox" value="1" checked>enableFullScreen</label></li>
-                    <li><label><input name="enableFadeOut" type="checkbox" value="1" checked>enableFadeOut</label></li>
-                    <li><label><input name="enableRotation" type="checkbox" value="1">enableRotation</label></li>
-                    <li><label><input name="enableFadeOutRotation" type="checkbox" value="1">enableFadeOutRotation</label></li>
-                </ul>
-                <input name="type" type="hidden" value="screen">
                 <button type="submit">Start</button>
             </form>
         </div>
