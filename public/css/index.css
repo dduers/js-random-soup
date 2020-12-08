@@ -2,19 +2,18 @@ form {
     display: block;
     width: 300px;
 }
-
-input[type="number"], input[type="text"], select {
-    display:block;
-    padding:10px;
-    width:100%;
+input[type="number"], 
+input[type="text"], 
+select {
+    display: block;
+    padding: 10px;
+    width: 100%;
     box-sizing: border-box;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
-
 input[type="checkbox"] {
-    vertical-align:middle;
+    vertical-align: middle;
 }
-
 label {
     font-weight: bold;
 }
