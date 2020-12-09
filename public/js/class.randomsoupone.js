@@ -42,6 +42,8 @@ class randomSoupOne {
         // max height of a stripe
         stripeMaxHeight: window.innerHeight,
 
+        // milliseconds between abandone the oldest stripe and replace with a new one
+        stripeRecycleMilliseconds: 5000,
 
         // font families to randomly pick from
         fontFamilies: [
@@ -169,7 +171,6 @@ class randomSoupOne {
      */
     intervalDrawCycle = null;
 
-
     /**
      * draw cycle interval
      */
@@ -181,14 +182,12 @@ class randomSoupOne {
      */
     stripeCoordinates = [];
 
-
-
     /**
      * class constructor
      * @param {*} options overwrite default settings
      */
-    constructor(options) {
-
+    constructor(options) 
+    {
         // merge options and defaults to settings
         this.settings = Object.assign({}, this.defaults, options);
 
@@ -204,9 +203,9 @@ class randomSoupOne {
                 });
             }
 
-            this.settings.maxCycles = this.settings.maxCycles * this.settings.stripeCount;
+            this.settings.maxCycles = (this.settings.maxCycles * this.settings.stripeCount) / 2;
 
-            this.intervalStripeRecycle = setInterval(this.stripeRecycle.bind(this), 5000);
+            this.intervalStripeRecycle = setInterval(this.stripeRecycle.bind(this), this.settings.stripeRecycleMilliseconds);
         }
 
         // draw cycle interval
@@ -214,10 +213,20 @@ class randomSoupOne {
     };
 
     /**
+     * destroy
+     */
+    destroy()
+    {
+        clearInterval(this.intervalDrawCycle);
+        clearInterval(this.intervalStripeRecycle);
+        document.getElementById(this.settings.containerElementId).innerHTML = '';
+    }
+
+    /**
      * recycle stripe offsets
      */
-    stripeRecycle() {
-
+    stripeRecycle() 
+    {
         // remove oldest stripe offset
         this.stripeCoordinates.shift();
 
@@ -231,8 +240,8 @@ class randomSoupOne {
     /**
      * one draw cycle
      */
-    drawCycle() {
-
+    drawCycle() 
+    {
         // create dom element
         let element = document.createElement('span');
 
@@ -279,9 +288,6 @@ class randomSoupOne {
                 left = this.stripeCoordinates[stripeCoordinateIndex].left;
                 break;
         }
-        
-        // set element content
-        element.textContent = char;
 
         // set dom element style
         element.style.top = '' + top + 'px';
@@ -296,6 +302,10 @@ class randomSoupOne {
             rotate = this.utilities.randomInteger(-180, 180);
             element.style.transform = 'rotate(' + rotate + 'deg)';
         }
+
+        // set element content
+        element.textContent = char;
+
 
         // append element to container
         document.getElementById(this.settings.containerElementId).append(element);
