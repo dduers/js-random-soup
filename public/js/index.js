@@ -6,11 +6,11 @@ let utilities = new randomUtilities();
 
 
 function updateParameterValues() {
-    document.getElementById('stripeCount1').value = Math.ceil(window.innerWidth / 40);
+    document.getElementById('stripeCount1').value = Math.ceil(window.innerWidth / 50);
     //if (document.getElementById('type').value == 'stripe') {
         //document.getElementById('maxCycles1').value = Math.ceil(window.innerHeight / 16);
     //} else {
-        document.getElementById('maxCycles1').value = Math.ceil(window.innerHeight * window.innerWidth / 10000);
+        document.getElementById('maxCycles1').value = Math.ceil(window.innerHeight * window.innerWidth / 50000);
     //}
 }
 

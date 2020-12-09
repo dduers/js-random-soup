@@ -16,6 +16,9 @@ let config = {
     fontSizes: [
         utilities.randomInteger(16, 24),
     ],
+    fontFamilies: [
+        'Courier'
+    ],
     stripeCount: utilities.getQueryVariable('stripeCount'),
 };
 

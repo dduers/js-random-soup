@@ -19,7 +19,7 @@ class randomSoupOne {
         sleepMilliseconds: 20,
 
         // max drawing cycles, before cleaning up kicks in
-        maxCycles: 1000,
+        maxCycles: 30,
 
         // enable sound fx
         enableAudio: true,
@@ -34,7 +34,7 @@ class randomSoupOne {
         enableRotation: false,
 
         // stripe count, when stripe type
-        stripeCount: Math.ceil(window.innerWidth / 20),
+        stripeCount: Math.ceil(window.innerWidth / 100),
 
         // min height of a stripe
         stripeMinHeight: Math.ceil(window.innerHeight / 8),
@@ -199,7 +199,7 @@ class randomSoupOne {
             for (let i = 0; i < this.settings.stripeCount; i++) {
                 this.stripeCoordinates.push({
                     left: this.utilities.randomInteger(0, window.innerWidth),
-                    maxTop: this.utilities.randomInteger(0, this.utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight)),
+                    maxTop: this.utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight),
                 });
             }
 
@@ -233,7 +233,7 @@ class randomSoupOne {
         // create new stripe offset
         this.stripeCoordinates.push({
             left: this.utilities.randomInteger(0, window.innerWidth),
-            maxTop: this.utilities.randomInteger(0, this.utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight)),
+            maxTop: this.utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight),
         });
     };
 
@@ -284,8 +284,8 @@ class randomSoupOne {
 
             case 'stripe':
                 let stripeCoordinateIndex = this.utilities.randomInteger(0, this.stripeCoordinates.length - 1);
-                top = this.utilities.randomInteger(0, this.stripeCoordinates[stripeCoordinateIndex].maxTop);
-                left = this.stripeCoordinates[stripeCoordinateIndex].left;
+                top = this.utilities.randomInteger(0, this.stripeCoordinates[stripeCoordinateIndex].maxTop) - fontSize;
+                left = this.stripeCoordinates[stripeCoordinateIndex].left - fontSize;
                 break;
         }
 
