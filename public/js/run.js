@@ -14,7 +14,7 @@ let config = {
     enableRotation: utilities.getQueryVariable('enableRotation') == 1 ? true : false,
     enableFadeOutRotation: utilities.getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
     fontSizes: [
-        utilities.randomInteger(28, 36),
+        utilities.randomInteger(20, 24),
     ],
     fontFamilies: [
         'Courier'
@@ -23,7 +23,7 @@ let config = {
     stripeRecycleMilliseconds: 5000,
 };
 
-if (utilities.getQueryVariable('runIndependant') == 1) {
+if (utilities.getQueryVariable('runIndependant') == 1 && utilities.getQueryVariable('type') == 'stripe') {
 
     // single stripe per instance
     config.stripeCount = 1;

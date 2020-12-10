@@ -18,6 +18,9 @@
                 <label>Count of stripes</label>
                 <p>Only applied in stripe mode</p>
                 <input name="stripeCount" id="stripeCount1" type="number" min="10" max="255" value="100">
+                <ul>
+                    <li><label><input name="runIndependant" type="checkbox" value="1" checked>runIndependant</label></li>
+                </ul>
                 <label>Milliseconds between drawing characters</label>
                 <p>In stripe mode, this is per stripe</p>
                 <input name="sleepMilliseconds" type="number" min="10" max="1000" value="20">
@@ -44,7 +47,6 @@
                     <li><label><input name="enableFadeOut" type="checkbox" value="1" checked>enableFadeOut</label></li>
                     <li><label><input name="enableRotation" type="checkbox" value="1">enableRotation</label></li>
                     <li><label><input name="enableFadeOutRotation" type="checkbox" value="1">enableFadeOutRotation</label></li>
-                    <li><label><input name="runIndependant" type="checkbox" value="1">runIndependant</label></li>
                 </ul>
                 <button type="submit">Start</button>
             </form>
