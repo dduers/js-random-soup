@@ -2,7 +2,7 @@
  * RANDOM SOUP CLASS (SCREEN)
  * create a funny matrix like random soup of characters in different colors and forms.
  */
-class randomSoupOne {
+class RandomSoup {
 
     /**
      * default values
@@ -192,20 +192,20 @@ class randomSoupOne {
         this.settings = Object.assign({}, this.defaults, options);
 
         // utilites class
-        this.utilities = new randomUtilities();
+        this.utilities = new Utilities();
 
-        // generate stripe left pixel offset for stripe mode
+        // generate stripe coordinates for stripe mode
         if (this.settings.type === 'stripe') {
+
             for (let i = 0; i < this.settings.stripeCount; i++) {
-                this.stripeCoordinates.push({
-                    left: this.utilities.randomInteger(0, window.innerWidth),
-                    maxTop: this.utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight),
-                });
+                this.stripeCoordinates.push(this.createStripeCoordinates());
             }
 
+            // in stripe mode, max cycles is per stripe
             this.settings.maxCycles = (this.settings.maxCycles * this.settings.stripeCount) / 2;
 
-            this.intervalStripeRecycle = setInterval(this.stripeRecycle.bind(this), this.settings.stripeRecycleMilliseconds);
+            // set lifetime cycle of stripe coordinates in milliseconds
+            this.intervalStripeRecycle = setInterval(this.cycleStripeCoordinates.bind(this), this.settings.stripeRecycleMilliseconds);
         }
 
         // draw cycle interval
@@ -223,18 +223,26 @@ class randomSoupOne {
     }
 
     /**
+     * create a set of stripe coordinates
+     */
+    createStripeCoordinates() 
+    {
+        return {
+            left: this.utilities.randomInteger(0, window.innerWidth),
+            maxTop: this.utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight),
+        }
+    }
+
+    /**
      * recycle stripe offsets
      */
-    stripeRecycle() 
+    cycleStripeCoordinates() 
     {
         // remove oldest stripe offset
         this.stripeCoordinates.shift();
 
         // create new stripe offset
-        this.stripeCoordinates.push({
-            left: this.utilities.randomInteger(0, window.innerWidth),
-            maxTop: this.utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight),
-        });
+        this.stripeCoordinates.push(this.createStripeCoordinates());
     };
 
     /**
@@ -306,7 +314,6 @@ class randomSoupOne {
         // set element content
         element.textContent = char;
 
-
         // append element to container
         document.getElementById(this.settings.containerElementId).append(element);
 
@@ -317,9 +324,7 @@ class randomSoupOne {
         if (this.counter > this.settings.maxCycles) {
 
             // remove oldest element
-            element = document.getElementsByTagName('span')[0];
-            //element = document.getElementById(this.stripeContainerElementId).childNodes[0];
-            element.remove();
+            document.getElementsByTagName('span')[0].remove();
 
             // decrement counter
             this.counter--;

@@ -2,12 +2,15 @@
  * RANDOM SOUP CLASS
  * create a funny matrix like random soup of characters in different colors and forms.
  */
-class randomUtilities {
+class Utilities {
 
     /**
      * class constructor
      */
-    constructor() { };
+    constructor() 
+    { 
+        // noop
+    };
 
     /**
      * open fullscreen

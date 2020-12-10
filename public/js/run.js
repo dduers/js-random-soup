@@ -1,5 +1,5 @@
 // helper utilities
-let utilities = new randomUtilities();
+let utilities = new Utilities();
 
 // get config from script parameters
 let config = {
@@ -23,6 +23,7 @@ let config = {
     stripeRecycleMilliseconds: 5000,
 };
 
+// if stripe mode and independant selected
 if (utilities.getQueryVariable('runIndependant') == 1 && utilities.getQueryVariable('type') == 'stripe') {
 
     // single stripe per instance
@@ -38,11 +39,11 @@ if (utilities.getQueryVariable('runIndependant') == 1 && utilities.getQueryVaria
         config.stripeRecycleMilliseconds = utilities.randomInteger(10000, 60000);
 
         // create instance
-        randomSoups[i] = new randomSoupOne(config);
+        randomSoups[i] = new RandomSoup(config);
     }
 
 } else {
 
     // single random soup instance
-    let randomSoup = new randomSoupOne(config);
+    let randomSoup = new RandomSoup(config);
 }

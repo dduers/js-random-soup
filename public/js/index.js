@@ -1,30 +1,9 @@
-/**
- * init input fields
- */
-
-let utilities = new randomUtilities();
-
-
+// update parameters
 function updateParameterValues() {
     document.getElementById('stripeCount1').value = Math.ceil(window.innerWidth / 100);
-    //if (document.getElementById('type').value == 'stripe') {
-        //document.getElementById('maxCycles1').value = Math.ceil(window.innerHeight / 16);
-    //} else {
-        document.getElementById('maxCycles1').value = Math.ceil(window.innerHeight * window.innerWidth / 50000);
-    //}
+    document.getElementById('maxCycles1').value = Math.ceil(window.innerHeight * window.innerWidth / 50000);
 }
 
-/*
-let form = document.getElementById('form');
-form.addEventListener('submit', function(event) {
-    let enableFullScreen = document.getElementById('enableFullScreen').value == 1 ? true : false;
-    if (enableFullScreen === true) {
-        utilities.openFullScreen();
-    }
-});
-*/
-
+// update parameters
 window.addEventListener('resize', updateParameterValues);
-document.getElementById('type').addEventListener('change', updateParameterValues);
-
 updateParameterValues();
