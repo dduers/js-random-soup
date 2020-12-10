@@ -14,6 +14,7 @@ let config = {
     enableShadows: utilities.getQueryVariable('enableShadows') == 1 ? true : false,
     enableRotation: utilities.getQueryVariable('enableRotation') == 1 ? true : false,
     enableFadeOutRotation: utilities.getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
+    enableOverlay: true,
     fontSizes: [
         utilities.randomInteger(18, 22),
     ],
@@ -22,6 +23,7 @@ let config = {
     ],*/
     stripeCount: utilities.getQueryVariable('stripeCount'),
     stripeRecycleMilliseconds: 5000,
+    backgroundColor: 'black',
 };
 
 // if stripe mode and independant selected

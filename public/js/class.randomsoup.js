@@ -30,6 +30,9 @@ class RandomSoup {
         // enable rotation on fade out
         enableFadeOutRotation: false,
 
+        // run as an overlay
+        enableOverlay: false,
+
         // enable static character rotation
         enableRotation: false,
 
@@ -197,12 +200,39 @@ class RandomSoup {
         // merge options and defaults to settings
         this.settings = Object.assign({}, this.defaults, options);
 
-        // set background color
-        document.getElementsByTagName('body')[0].style.backgroundColor = this.settings.backgroundColor;
-        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-
         // utilites class
         this.utilities = new Utilities();
+
+        // if the container element does not exists
+        if (!document.getElementById(this.settings.containerElementId)) {
+
+            // create container element as overlay and append to body
+            let element = document.createElement('div');
+            element.setAttribute('id', this.settings.containerElementId);
+
+            // if overlay is enabled
+            if (this.settings.enableOverlay === true) {
+
+                element.style.position = 'fixed';
+                element.style.top = 0;
+                element.style.left = 0;
+                element.style.width = '100%';
+                element.style.height = '100%';
+                element.style.backgroundColor = this.settings.backgroundColor;
+                element.style.opacity = 1;
+                element.style.zIndex = 10000;
+                element.style.overflow = 'hidden';
+                
+            // if overlay mode is disabled, apply background color to body
+            } else {
+
+                document.getElementsByTagName('body')[0].style.backgroundColor = this.settings.backgroundColor;
+                document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+    
+            }
+
+            document.body.append(element);
+        }
 
         // generate stripe coordinates for stripe mode
         if (this.settings.type === 'stripe') {
@@ -326,7 +356,7 @@ class RandomSoup {
         // set element content
         element.textContent = char;
 
-        // append element to container
+        // append element to the container
         document.getElementById(this.settings.containerElementId).append(element);
 
         // increment counter
