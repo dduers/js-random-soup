@@ -189,6 +189,8 @@ class RandomSoup {
      */
     intervalStripeRecycle = null;
 
+    //intervalGarbageCollector = null;
+
     /**
      * pixel count from the left for stripes
      * this array will be generated in the class contructor, depending on stripe count
@@ -251,6 +253,9 @@ class RandomSoup {
             // set lifetime cycle of stripe coordinates in milliseconds
             this.intervalStripeRecycle = setInterval(this.cycleStripeCoordinates.bind(this), this.settings.stripeRecycleMilliseconds);
         }
+
+        // garbage collector cycle interval
+        //this.intervalGarbageCollector = setInterval(this.garbageCollector.bind(this), 20);
 
         // draw cycle interval
         this.intervalDrawCycle = setInterval(this.drawCycle.bind(this), this.settings.sleepMilliseconds);

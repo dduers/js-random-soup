@@ -7,7 +7,7 @@ let config = {
     sleepMilliseconds: utilities.getQueryVariable('sleepMilliseconds'),
     maxCycles: utilities.getQueryVariable('maxCycles'),
     characters: decodeURIComponent(utilities.getQueryVariable('characters')),
-    characters: decodeURIComponent(utilities.getQueryVariable('words')).split(','),
+    words: utilities.getQueryVariable('words') !== '' && utilities.getQueryVariable('words') !== false ? decodeURIComponent(utilities.getQueryVariable('words')).split(',') : [],
     specialProbability: utilities.getQueryVariable('specialProbability'),
     specialCharacters: decodeURIComponent(utilities.getQueryVariable('specialCharacters')),
     enableAudio: utilities.getQueryVariable('enableAudio') == 1 ? true : false,
