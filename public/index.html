@@ -17,7 +17,7 @@
                 </select>
                 <label>Count of stripes</label>
                 <p>Only applied in stripe mode</p>
-                <input name="stripeCount" id="stripeCount1" type="number" min="10" max="255" value="100">
+                <input name="stripeCount" id="stripeCount1" type="number" min="1" max="255" value="10">
                 <ul>
                     <li><label><input name="runIndependant" type="checkbox" value="1" checked>runIndependant</label></li>
                 </ul>
@@ -26,7 +26,7 @@
                 <input name="sleepMilliseconds" type="number" min="10" max="1000" value="20">
                 <label>Maximum character count</label>
                 <p>In stripe mode, this is per stripe</p>
-                <input name="maxCycles" id="maxCycles1" type="number" min="1" max="10000" value="100">
+                <input name="maxCycles" id="maxCycles1" type="number" min="1" max="10000" value="60">
                 <label>Normal characters</label>
                 <input name="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
                 <label>Probability of errors in the Matrix</label>
@@ -51,6 +51,5 @@
                 <button type="submit">Start</button>
             </form>
         </div>
-        <script src="js/index.js"></script> 
     </body>
 </html>
