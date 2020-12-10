@@ -29,6 +29,8 @@
                 <input name="maxCycles" id="maxCycles1" type="number" min="1" max="10000" value="60">
                 <label>Normal characters</label>
                 <input name="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
+                <label>Comma separated words</label>
+                <input name="words" type="text" value="">
                 <label>Probability of errors in the Matrix</label>
                 <p>In stripe mode, this is per stripe</p>
                 <select name="specialProbability">
@@ -37,6 +39,7 @@
                     <option value="10000">1 : 10'000 (Rainy days)</option>
                     <option value="1000">1 : 1'000 (Cheap pizza)</option>
                     <option value="100">1 : 100 (Bag of rice falling somewhere)</option>
+                    <option value="-1">disable</option>
                 </select>
                 <label>Error characters</label>
                 <input name="specialCharacters" type="text" value="π">

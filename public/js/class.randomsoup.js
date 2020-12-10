@@ -102,6 +102,10 @@ class RandomSoup {
         // characters to randomly pick from
         characters: '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦',
 
+        // array of words to use instead of single characters
+        // if empty, single characters are used
+        words: [],
+
         // colors to randomly pick from
         colors: [
             '#00FF00',
@@ -294,7 +298,7 @@ class RandomSoup {
         let element = document.createElement('span');
 
         // element styles and content
-        let char;
+        let elementContent;
         let fontSize;
         let top;
         let left;
@@ -305,15 +309,27 @@ class RandomSoup {
         let rotate;
 
         // values for new element
-        char = this.utilities.randomString(1, this.settings.characters);
+        // set element content
+        if (this.settings.words.length) {
+            elementContent = this.settings.words[this.utilities.randomInteger(0, this.settings.words.length - 1)];
+        } else {
+            elementContent = this.utilities.randomString(1, this.settings.characters);
+        }
         fontSize = this.settings.fontSizes[this.utilities.randomInteger(0, this.settings.fontSizes.length - 1)];
         fontFamily = this.settings.fontFamilies[this.utilities.randomInteger(0, this.settings.fontFamilies.length - 1)];
         textShadow = this.settings.textShadows[this.utilities.randomInteger(0, this.settings.textShadows.length - 1)];
         color = this.settings.colors[this.utilities.randomInteger(0, this.settings.colors.length - 1)];
 
         // overwrite in special cases ...
-        if (this.utilities.randomInteger(0, this.settings.specialProbability) === 0) {
-            char = this.utilities.randomString(1, this.settings.specialCharacters);
+        if (this.utilities.randomInteger(0, this.settings.specialProbability) === 0 && !(this.settings.specialProbability < 0)) {
+            
+            // set element content
+            if (this.settings.words.length) {
+                elementContent = this.settings.words[this.utilities.randomInteger(0, this.settings.words.length - 1)];
+            } else {
+                elementContent = this.utilities.randomString(1, this.settings.specialCharacters);
+            }
+
             fontSize = 280;
             textShadow = this.settings.specialTextShadows[this.utilities.randomInteger(0, this.settings.specialTextShadows.length - 1)];
             color = this.settings.specialColors[this.utilities.randomInteger(0, this.settings.specialColors.length - 1)];
@@ -354,7 +370,7 @@ class RandomSoup {
         }
 
         // set element content
-        element.textContent = char;
+        element.textContent = elementContent;
 
         // append element to the container
         document.getElementById(this.settings.containerElementId).append(element);
