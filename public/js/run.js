@@ -20,7 +20,29 @@ let config = {
         'Courier'
     ],
     stripeCount: utilities.getQueryVariable('stripeCount'),
+    stripeRecycleMilliseconds: 5000,
 };
 
-// start random soup
-let randomSoup = new randomSoupOne(config);
+if (utilities.getQueryVariable('runIndependant') == 1) {
+
+    // single stripe per instance
+    config.stripeCount = 1;
+
+    // random soup instances
+    let randomSoups = [];
+    
+    // start random soup
+    for (let i = 0; i < utilities.getQueryVariable('stripeCount'); i++) {
+
+        // random recycle milliseconds for every instance
+        config.stripeRecycleMilliseconds = utilities.randomInteger(10000, 60000);
+
+        // create instance
+        randomSoups[i] = new randomSoupOne(config);
+    }
+
+} else {
+
+    // single random soup instance
+    let randomSoup = new randomSoupOne(config);
+}
