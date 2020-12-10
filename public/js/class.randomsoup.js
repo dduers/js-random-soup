@@ -149,6 +149,9 @@ class RandomSoup {
         specialAudio: [
             'audio/1.mp3',
         ],
+
+        // body background color
+        backgroundColor: 'black',
     };
 
     /**
@@ -190,6 +193,10 @@ class RandomSoup {
     {
         // merge options and defaults to settings
         this.settings = Object.assign({}, this.defaults, options);
+
+        // set background color
+        document.getElementsByTagName('body')[0].style.backgroundColor = this.settings.backgroundColor;
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden';
 
         // utilites class
         this.utilities = new Utilities();
