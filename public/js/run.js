@@ -14,7 +14,7 @@ let config = {
     enableRotation: utilities.getQueryVariable('enableRotation') == 1 ? true : false,
     enableFadeOutRotation: utilities.getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
     fontSizes: [
-        utilities.randomInteger(16, 24),
+        utilities.randomInteger(28, 36),
     ],
     fontFamilies: [
         'Courier'

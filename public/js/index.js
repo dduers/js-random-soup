@@ -6,7 +6,7 @@ let utilities = new randomUtilities();
 
 
 function updateParameterValues() {
-    document.getElementById('stripeCount1').value = Math.ceil(window.innerWidth / 50);
+    document.getElementById('stripeCount1').value = Math.ceil(window.innerWidth / 100);
     //if (document.getElementById('type').value == 'stripe') {
         //document.getElementById('maxCycles1').value = Math.ceil(window.innerHeight / 16);
     //} else {
