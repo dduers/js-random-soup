@@ -15,7 +15,6 @@ let config = {
     enableShadows: utilities.getQueryVariable('enableShadows') == 1 ? true : false,
     enableRotation: utilities.getQueryVariable('enableRotation') == 1 ? true : false,
     enableFadeOutRotation: utilities.getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
-    enableOverlay: true,
     fontSizes: [
         utilities.randomInteger(18, 22),
     ],
