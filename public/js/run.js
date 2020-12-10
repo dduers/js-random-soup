@@ -11,6 +11,7 @@ let config = {
     specialCharacters: decodeURIComponent(utilities.getQueryVariable('specialCharacters')),
     enableAudio: utilities.getQueryVariable('enableAudio') == 1 ? true : false,
     enableFadeOut: utilities.getQueryVariable('enableFadeOut') == 1 ? true : false,
+    enableShadows: utilities.getQueryVariable('enableShadows') == 1 ? true : false,
     enableRotation: utilities.getQueryVariable('enableRotation') == 1 ? true : false,
     enableFadeOutRotation: utilities.getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
     fontSizes: [

@@ -33,6 +33,9 @@ class RandomSoup {
         // enable static character rotation
         enableRotation: false,
 
+        // enable shadows on characters
+        enableShadows: false,
+
         // stripe count, when stripe type
         stripeCount: Math.ceil(window.innerWidth / 100),
 
@@ -311,7 +314,9 @@ class RandomSoup {
         element.style.fontFamily = '' + fontFamily;
         element.style.color = '' + color;
         element.style.position = 'absolute';
-        element.style.textShadow = textShadow;
+
+        if (this.settings.enableShadows === true)
+            element.style.textShadow = textShadow;
 
         if (this.settings.enableRotation === true) {
             rotate = this.utilities.randomInteger(-180, 180);
