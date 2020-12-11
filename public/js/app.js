@@ -112,6 +112,9 @@ if (utilities.getQueryVariable('type') === false) {
             'Times',
             'Courier',
         ],
+        specialAudio: [
+            'audio/1.mp3',
+        ],
         stripeCount: utilities.getQueryVariable('stripeCount'),
         stripeRecycleMilliseconds: 5000,
         backgroundColor: 'black',

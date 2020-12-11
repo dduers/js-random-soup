@@ -162,9 +162,7 @@ class RandomSoup {
         ],
 
         // audio to randomly pick from when special occurs
-        specialAudio: [
-            'audio/1.mp3',
-        ],
+        specialAudio: [],
 
         // body background color
         backgroundColor: 'black',
