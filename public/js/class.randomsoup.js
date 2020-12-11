@@ -254,9 +254,14 @@ class RandomSoup {
      */
     destroy()
     {
+        // clear internal intervals
         clearInterval(this.intervalDrawCycle);
         clearInterval(this.intervalStripeRecycle);
-        document.getElementById(this.settings.containerElementId).remove();
+
+        // remove container element, if not already removed
+        let containerElement = document.getElementById(this.settings.containerElementId);
+        if (containerElement !== null)
+            document.getElementById(this.settings.containerElementId).remove();
     }
 
     /**
