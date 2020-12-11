@@ -4,17 +4,6 @@
  */
 class Utilities {
 
-    /**
-     * class constructor
-     */
-    constructor() 
-    { 
-        // noop
-    };
-
-    /**
-     * open fullscreen
-     */
     openFullScreen() 
     {
         let element = document.documentElement;
@@ -27,15 +16,7 @@ class Utilities {
         }
     }
 
-    sleep(milliseconds) 
-    {
-        return new Promise(resolve => setTimeout(resolve, milliseconds));
-    }
-
-    /**
-     * close fullscreen
-     */
-    closeFullscreen() 
+    closeFullScreen() 
     {
         if (document.exitFullscreen) {
             document.exitFullscreen();
@@ -44,6 +25,16 @@ class Utilities {
         } else if (document.msExitFullscreen) { /* IE11 */
             document.msExitFullscreen();
         }
+    }
+
+    isFullScreen()
+    {
+        return document.fullscreenElement === null ? false : true;
+    }
+
+    toggleFullScreen()
+    {
+        utilities.isFullScreen() ? utilities.closeFullScreen() : utilities.openFullScreen();
     }
 
     /**
@@ -91,5 +82,10 @@ class Utilities {
             }
         }
         return false;
+    }
+
+    sleep(milliseconds) 
+    {
+        return new Promise(resolve => setTimeout(resolve, milliseconds));
     }
 }

@@ -142,3 +142,8 @@ if (utilities.getQueryVariable('type') === false) {
         }
     });
 }
+
+// full screen with doubleclick
+document.addEventListener('dblclick', function() {
+    utilities.toggleFullScreen();
+});
