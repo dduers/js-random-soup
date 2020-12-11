@@ -37,7 +37,7 @@ class RandomSoup {
         enableShadows: false,
 
         // stripe count, when stripe type
-        stripeCount: Math.ceil(window.innerWidth / 500),
+        stripeCount: 10,
 
         // min height of a stripe
         stripeMinHeight: Math.ceil(window.innerHeight / 8),
@@ -102,6 +102,7 @@ class RandomSoup {
         // array of words to use instead of single characters
         // if empty, single characters are used
         words: [],
+        specialWords: [],
 
         // colors to randomly pick from
         colors: [
@@ -150,6 +151,11 @@ class RandomSoup {
         specialTextShadows: [
             '1px 1px 2px red',
             'none',
+        ],
+
+        specialFontSizes: [
+            72,
+            96,
         ],
 
         // audio to randomly pick from when special occurs
@@ -308,13 +314,13 @@ class RandomSoup {
         if (this.utilities.randomInteger(0, this.settings.specialProbability) === 0 && !(this.settings.specialProbability < 0)) {
             
             // set element content
-            if (this.settings.words.length) {
-                elementContent = this.settings.words[this.utilities.randomInteger(0, this.settings.words.length - 1)];
+            if (this.settings.specialWords.length) {
+                elementContent = this.settings.specialWords[this.utilities.randomInteger(0, this.settings.specialWords.length - 1)];
             } else {
                 elementContent = this.utilities.randomString(1, this.settings.specialCharacters);
             }
 
-            fontSize = 280;
+            fontSize = this.settings.specialFontSizes[this.utilities.randomInteger(0, this.settings.specialFontSizes.length - 1)];;
             textShadow = this.settings.specialTextShadows[this.utilities.randomInteger(0, this.settings.specialTextShadows.length - 1)];
             color = this.settings.specialColors[this.utilities.randomInteger(0, this.settings.specialColors.length - 1)];
             if (this.settings.enableAudio === true && this.settings.specialAudio.length > 0) {
@@ -366,7 +372,8 @@ class RandomSoup {
         if (this.counter > this.settings.maxCycles) {
 
             // remove oldest element
-            document.getElementsByTagName('span')[0].remove();
+            if (document.getElementsByTagName('span')[0] !== 'undefined')
+                document.getElementsByTagName('span')[0].remove();
 
             // decrement counter
             this.counter--;

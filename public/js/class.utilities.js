@@ -56,6 +56,8 @@ class Utilities {
         let result = '';
         let charsLength = chars.length;
         let i = 0;
+        if (!charsLength)
+            return result;
         for (i = 0; i < size; i++) {
             result += chars[this.randomInteger(0, charsLength - 1)];
         }
