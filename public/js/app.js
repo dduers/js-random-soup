@@ -141,9 +141,7 @@ if (utilities.getQueryVariable('type') === false) {
             window.location.href = 'index.html';
         }
     });
-}
 
-// full screen with doubleclick
-document.addEventListener('dblclick', function() {
-    utilities.toggleFullScreen();
-});
+    // full screen with doubleclick
+    document.addEventListener('dblclick', utilities.toggleFullScreen);
+}
