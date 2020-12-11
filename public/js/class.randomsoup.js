@@ -12,6 +12,9 @@ class RandomSoup {
         // soup type, currently supported "screen" or "stripe"
         type: 'stripe',
 
+        // opacity of the container element
+        opacity: 1,
+
         // id of the container element
         containerElementId: 'randomSoupContainer',
 
@@ -222,7 +225,7 @@ class RandomSoup {
             element.style.width = '100%';
             element.style.height = '100%';
             element.style.backgroundColor = this.settings.backgroundColor;
-            element.style.opacity = 1;
+            element.style.opacity = this.settings.opacity;
             element.style.zIndex = 10000;
             element.style.overflow = 'hidden';
             document.body.prepend(element);

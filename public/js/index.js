@@ -5,10 +5,10 @@ let timeOut = 1000;
 let randomSoupConfig = {
     type: 'screen',
     backgroundColor: 'black',
-    sleepMilliseconds: 20,
-    maxCycles: 100,
+    sleepMilliseconds: 50,
+    maxCycles: 75,
     characters: '*°.',
-    specialProbability: 200,
+    specialProbability: 250,
     specialWords: [
         'believe',
         'in',
@@ -20,36 +20,54 @@ let randomSoupConfig = {
 }
 
 randomSoupConfig = {
-    enableShadows: true,
     type: 'screen',
-    backgroundColor: 'black',
-    sleepMilliseconds: 20,
-    maxCycles: 100,
+    opacity: 1,
+    backgroundColor: '#fefefe',
+    sleepMilliseconds: 50,
+    maxCycles: 80,
     characters: '°',
     specialProbability: 200,
     words: [
         'SWIS',
+        'Swiss',
+        'Wildlife',
+        'Information',
+        'Service',
     ],
     colors: [
-        '#333333',
-        '#222222',
-        '#111111',
-        '#000000',
+        '#d5d6c2',
+        '#f7f8e4',
+    ],
+    fontFamilies: [
+        'Arial',
+    ],
+    fontSizes: [
+        18,
+        20,
+        22,
+    ],
+    specialFontSizes: [
+        60,
+        72,
+        84,
     ],
     specialWords: [
         'Bartgeier',
-        'Antarktis',
-        'Monitoring',
         'Rothirsch',
+        'Monitoring',
+        'Schneehase',
+        'Antarktis',
+        'Australien',
     ],
     specialColors: [
         '#9e8e5e',
     ],
+    enableShadows: true,
     textShadows: [
         'none',
     ],
     specialTextShadows: [
-        '0px 0px 10px #9E8E5E',
+        'none',
     ],   
 }
 
