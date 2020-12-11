@@ -6,15 +6,15 @@ let utilities = new Utilities();
 
 if (utilities.getQueryVariable('type') === false) {
     let timer;
-    let timeOut = 1000;
+    let timeOut = 30000;
     let randomSoupInstance;
     let randomSoupConfig = {
         type: 'screen',
         backgroundColor: 'black',
-        sleepMilliseconds: 50,
-        maxCycles: 75,
+        sleepMilliseconds: 60,
+        maxCycles: 60,
         characters: '*°.',
-        specialProbability: 200,
+        specialProbability: 150,
         specialWords: [
             'believe',
             'in',
