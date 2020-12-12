@@ -15,34 +15,16 @@
             let randomSoupConfig = {
                 type: 'screen',
                 backgroundColor: '#fefefe',
-                sleepMilliseconds: 60,
+                sleepMilliseconds: 100,
                 maxCycles: 60,
-                words: [
-                    'SWIS',
-                    'Swiss',
-                    'Wildlife',
-                    'Information',
-                    'Service',
-                ],
-                colors: [
-                    '#c4c5b1',
-                    '#d5d6c2',
-                    '#f7f8e4',
-                ],
+                words: ['SWIS', 'Swiss', 'Wildlife', 'Information', 'Service'],
+                colors: ['#c4c5b1', '#d5d6c2', '#f7f8e4'],
                 fontFamilies: [
                     'Arial',
                 ],
-                fontSizes: [
-                    18,
-                    20,
-                    22,
-                ],
+                fontSizes: [18, 20, 22],
                 specialProbability: 200,
-                specialFontSizes: [
-                    60,
-                    72,
-                    84,
-                ],
+                specialFontSizes: [60, 72, 84],
                 specialWords: [
                     'Bartgeier',
                     'Rothirsch',
@@ -51,11 +33,8 @@
                     'Antarktis',
                     'Australien',
                 ],
-                specialColors: [
-                    '#9e8e5e',
-                ],  
-            }
-            // screen saver like demo
+                specialColors: ['#9e8e5e'],  
+            };
             document.addEventListener('mouseleave', function() {
                 timer = setTimeout(function() {
                     randomSoupInstance = new RandomSoup(randomSoupConfig);

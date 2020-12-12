@@ -22,14 +22,13 @@ if (utilities.getQueryVariable('type') === false) {
         specialColors: [
             'darkred',
         ],   
-    }
-    // screen saver like demo
-    document./*body.*/addEventListener('mouseleave', function() {
+    };
+    document.addEventListener('mouseleave', function() {
         timer = setTimeout(function() {
             randomSoupInstance = new RandomSoup(randomSoupConfig);
         }, timeOut);
     });
-    document./*body.*/addEventListener('mouseenter', function() {
+    document.addEventListener('mouseenter', function() {
         clearTimeout(timer);
         if (randomSoupInstance) {
             randomSoupInstance.destroy();
