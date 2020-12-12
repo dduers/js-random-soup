@@ -27,7 +27,10 @@
             <p>In stripe mode, this is per stripe</p>
             <input name="maxCycles" id="maxCycles1" type="number" min="1" max="10000" value="60">
             <label>Normal characters</label>
-            <input name="characters" type="text" value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦">
+            <select id="type" name="characters">
+                <option value="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/*-=()&\*ç+°§?^![]$£{}àéèüöä|¢¬#@¦" selected>Random</option>
+                <option value="*.°">It's full of stars</option>
+            </select>
             <label>Comma separated words</label>
             <input name="words" type="text" value="">
             <label>Probability of errors in the Matrix</label>
