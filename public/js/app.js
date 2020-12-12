@@ -3,7 +3,6 @@ let utilities = new Utilities();
 /**
  * DEMO "SCREEN SAVER"
  */
-
 if (utilities.getQueryVariable('type') === false) {
     let timer;
     let timeOut = 30000;
@@ -24,58 +23,13 @@ if (utilities.getQueryVariable('type') === false) {
             'darkred',
         ],   
     }
-    /*
-    randomSoupConfig = {
-        type: 'screen',
-        backgroundColor: '#fefefe',
-        sleepMilliseconds: 60,
-        maxCycles: 60,
-        words: [
-            'SWIS',
-            'Swiss',
-            'Wildlife',
-            'Information',
-            'Service',
-        ],
-        colors: [
-            '#c4c5b1',
-            '#d5d6c2',
-            '#f7f8e4',
-        ],
-        fontFamilies: [
-            'Arial',
-        ],
-        fontSizes: [
-            18,
-            20,
-            22,
-        ],
-        specialProbability: 200,
-        specialFontSizes: [
-            60,
-            72,
-            84,
-        ],
-        specialWords: [
-            'Bartgeier',
-            'Rothirsch',
-            'Monitoring',
-            'Schneehase',
-            'Antarktis',
-            'Australien',
-        ],
-        specialColors: [
-            '#9e8e5e',
-        ],  
-    }
-    */
     // screen saver like demo
-    document.body.addEventListener('mouseleave', function() {
+    document./*body.*/addEventListener('mouseleave', function() {
         timer = setTimeout(function() {
             randomSoupInstance = new RandomSoup(randomSoupConfig);
         }, timeOut);
     });
-    document.body.addEventListener('mouseenter', function() {
+    document./*body.*/addEventListener('mouseenter', function() {
         clearTimeout(timer);
         if (randomSoupInstance) {
             randomSoupInstance.destroy();
@@ -83,11 +37,9 @@ if (utilities.getQueryVariable('type') === false) {
         }
     });
 
-
 /**
  * STARTUP FROM FORM PARAMETERS
  */
-
 } else {
 
     let randomSoupInstances = [];
