@@ -23,10 +23,8 @@ if (utilities.getQueryVariable('type') === false) {
             'darkred',
         ],   
     };
-
     document.addEventListener('mousemove', randomSoupStarter);
     document.addEventListener('DOMContentLoaded', randomSoupStarter);
-    
     function randomSoupStarter() {
         if (randomSoupInstance) {
             randomSoupInstance.destroy();
@@ -43,7 +41,6 @@ if (utilities.getQueryVariable('type') === false) {
  * STARTUP FROM FORM PARAMETERS
  */
 } else {
-
     let randomSoupInstances = [];
     let randomSoupConfig = {
         type: utilities.getQueryVariable('type'),
@@ -73,7 +70,6 @@ if (utilities.getQueryVariable('type') === false) {
         stripeRecycleMilliseconds: 5000,
         backgroundColor: 'black',
     };
-
     // if stripe mode and independant selected
     if (utilities.getQueryVariable('runIndependant') == 1 && utilities.getQueryVariable('type') == 'stripe') {
         randomSoupConfig.stripeCount = 1;
@@ -84,7 +80,6 @@ if (utilities.getQueryVariable('type') === false) {
     } else {
         randomSoupInstances[0] = new RandomSoup(randomSoupConfig);
     }
-
     // stop with anykey
     document.addEventListener('keydown', function(event) {
         event = event || window.event;
@@ -95,7 +90,6 @@ if (utilities.getQueryVariable('type') === false) {
             window.location.href = 'index.html';
         }
     });
-
     // full screen with doubleclick
     document.addEventListener('dblclick', utilities.toggleFullScreen);
 }
