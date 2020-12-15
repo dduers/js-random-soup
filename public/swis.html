@@ -10,7 +10,7 @@
         <script src="js/class.randomsoup.js"></script>
         <script> 
             let timer;
-            let timeOut = 1000;
+            let timeOut = 2000;
             let randomSoupInstance;
             let randomSoupConfig = {
                 type: 'screen',
@@ -33,18 +33,21 @@
                 ],
                 specialColors: ['#9e8e5e'],  
             };
-            document.addEventListener('mouseleave', function() {
-                timer = setTimeout(function() {
-                    randomSoupInstance = new RandomSoup(randomSoupConfig);
-                }, timeOut);
-            });
-            document.addEventListener('mouseenter', function() {
-                clearTimeout(timer);
+
+            document.addEventListener('mousemove', randomSoupStarter);
+            document.addEventListener('DOMContentLoaded', randomSoupStarter);
+            
+            function randomSoupStarter() {
                 if (randomSoupInstance) {
                     randomSoupInstance.destroy();
                     randomSoupInstance = null;
                 }
-            });
+                clearTimeout(timer);
+                timer = setTimeout(function() {
+                    if (!randomSoupInstance)
+                        randomSoupInstance = new RandomSoup(randomSoupConfig);
+                }, timeOut);
+            }
         </script> 
     </body>
 </html>

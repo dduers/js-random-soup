@@ -5,7 +5,7 @@ let utilities = new Utilities();
  */
 if (utilities.getQueryVariable('type') === false) {
     let timer;
-    let timeOut = 30000;
+    let timeOut = 15000;
     let randomSoupInstance;
     let randomSoupConfig = {
         type: 'screen',
@@ -23,18 +23,21 @@ if (utilities.getQueryVariable('type') === false) {
             'darkred',
         ],   
     };
-    document.addEventListener('mouseleave', function() {
-        timer = setTimeout(function() {
-            randomSoupInstance = new RandomSoup(randomSoupConfig);
-        }, timeOut);
-    });
-    document.addEventListener('mouseenter', function() {
-        clearTimeout(timer);
+
+    document.addEventListener('mousemove', randomSoupStarter);
+    document.addEventListener('DOMContentLoaded', randomSoupStarter);
+    
+    function randomSoupStarter() {
         if (randomSoupInstance) {
             randomSoupInstance.destroy();
             randomSoupInstance = null;
         }
-    });
+        clearTimeout(timer);
+        timer = setTimeout(function() {
+            if (!randomSoupInstance)
+                randomSoupInstance = new RandomSoup(randomSoupConfig);
+        }, timeOut);
+    }
 
 /**
  * STARTUP FROM FORM PARAMETERS
