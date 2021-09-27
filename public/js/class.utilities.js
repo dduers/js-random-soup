@@ -4,7 +4,7 @@
  */
 class Utilities {
 
-    openFullScreen() 
+    static openFullScreen() 
     {
         let element = document.documentElement;
         if (element.requestFullscreen) {
@@ -16,7 +16,7 @@ class Utilities {
         }
     }
 
-    closeFullScreen() 
+    static closeFullScreen() 
     {
         if (document.exitFullscreen) {
             document.exitFullscreen();
@@ -27,14 +27,14 @@ class Utilities {
         }
     }
 
-    isFullScreen()
+    static isFullScreen()
     {
         return document.fullscreenElement === null ? false : true;
     }
 
-    toggleFullScreen()
+    static toggleFullScreen()
     {
-        utilities.isFullScreen() ? utilities.closeFullScreen() : utilities.openFullScreen();
+        Utilities.isFullScreen() ? Utilities.closeFullScreen() : Utilities.openFullScreen();
     }
 
     /**
@@ -42,7 +42,7 @@ class Utilities {
      * @param {*} size number of characters in the result string
      * @param {*} chars characters to include to build random string
      */
-    randomString(size=1, chars='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') 
+    static randomString(size=1, chars='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ') 
     {
         let result = '';
         let charsLength = chars.length;
@@ -60,7 +60,7 @@ class Utilities {
      * @param {*} min minimum value
      * @param {*} max maximum value
      */
-    randomInteger(min, max) 
+    static randomInteger(min, max) 
     {
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -71,7 +71,7 @@ class Utilities {
      * get query variable
      * @param {*} variable name of variable
      */
-    getQueryVariable(variable)
+    static getQueryVariable(variable)
     {
         let query = window.location.search.substring(1);
         let vars = query.split("&");
@@ -84,7 +84,7 @@ class Utilities {
         return false;
     }
 
-    sleep(milliseconds) 
+    static sleep(milliseconds) 
     {
         return new Promise(resolve => setTimeout(resolve, milliseconds));
     }

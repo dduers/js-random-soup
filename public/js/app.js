@@ -1,9 +1,7 @@
-let utilities = new Utilities();
-
 /**
  * DEMO "SCREEN SAVER"
  */
-if (utilities.getQueryVariable('type') === false) {
+if (Utilities.getQueryVariable('type') === false) {
     let timer;
     let timeOut = 15000;
     let randomSoupInstance;
@@ -43,20 +41,20 @@ if (utilities.getQueryVariable('type') === false) {
 } else {
     let randomSoupInstances = [];
     let randomSoupConfig = {
-        type: utilities.getQueryVariable('type'),
-        sleepMilliseconds: utilities.getQueryVariable('sleepMilliseconds'),
-        maxCycles: utilities.getQueryVariable('maxCycles'),
-        characters: decodeURIComponent(utilities.getQueryVariable('characters')),
-        words: utilities.getQueryVariable('words') !== '' && utilities.getQueryVariable('words') !== false ? decodeURIComponent(utilities.getQueryVariable('words')).split(',') : [],
-        specialProbability: utilities.getQueryVariable('specialProbability'),
-        specialCharacters: decodeURIComponent(utilities.getQueryVariable('specialCharacters')),
-        enableAudio: utilities.getQueryVariable('enableAudio') == 1 ? true : false,
-        enableFadeOut: utilities.getQueryVariable('enableFadeOut') == 1 ? true : false,
-        enableShadows: utilities.getQueryVariable('enableShadows') == 1 ? true : false,
-        enableRotation: utilities.getQueryVariable('enableRotation') == 1 ? true : false,
-        enableFadeOutRotation: utilities.getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
+        type: Utilities.getQueryVariable('type'),
+        sleepMilliseconds: Utilities.getQueryVariable('sleepMilliseconds'),
+        maxCycles: Utilities.getQueryVariable('maxCycles'),
+        characters: decodeURIComponent(Utilities.getQueryVariable('characters')),
+        words: Utilities.getQueryVariable('words') !== '' && Utilities.getQueryVariable('words') !== false ? decodeURIComponent(Utilities.getQueryVariable('words')).split(',') : [],
+        specialProbability: Utilities.getQueryVariable('specialProbability'),
+        specialCharacters: decodeURIComponent(Utilities.getQueryVariable('specialCharacters')),
+        enableAudio: Utilities.getQueryVariable('enableAudio') == 1 ? true : false,
+        enableFadeOut: Utilities.getQueryVariable('enableFadeOut') == 1 ? true : false,
+        enableShadows: Utilities.getQueryVariable('enableShadows') == 1 ? true : false,
+        enableRotation: Utilities.getQueryVariable('enableRotation') == 1 ? true : false,
+        enableFadeOutRotation: Utilities.getQueryVariable('enableFadeOutRotation') == 1 ? true : false,
         fontSizes: [
-            utilities.randomInteger(18, 22),
+            Utilities.randomInteger(18, 22),
         ],
         fontFamilies: [
             'Arial',
@@ -66,15 +64,15 @@ if (utilities.getQueryVariable('type') === false) {
         specialAudio: [
             'audio/1.mp3',
         ],
-        stripeCount: utilities.getQueryVariable('stripeCount'),
+        stripeCount: Utilities.getQueryVariable('stripeCount'),
         stripeRecycleMilliseconds: 5000,
         backgroundColor: 'black',
     };
     // if stripe mode and independant selected
-    if (utilities.getQueryVariable('runIndependant') == 1 && utilities.getQueryVariable('type') == 'stripe') {
+    if (Utilities.getQueryVariable('runIndependant') == 1 && Utilities.getQueryVariable('type') == 'stripe') {
         randomSoupConfig.stripeCount = 1;
-        for (let i = 0; i < utilities.getQueryVariable('stripeCount'); i++) {
-            randomSoupConfig.stripeRecycleMilliseconds = utilities.randomInteger(10000, 60000);
+        for (let i = 0; i < Utilities.getQueryVariable('stripeCount'); i++) {
+            randomSoupConfig.stripeRecycleMilliseconds = Utilities.randomInteger(10000, 60000);
             randomSoupInstances[i] = new RandomSoup(randomSoupConfig);
         }
     } else {
@@ -91,5 +89,5 @@ if (utilities.getQueryVariable('type') === false) {
         }
     });
     // full screen with doubleclick
-    document.addEventListener('dblclick', utilities.toggleFullScreen);
+    document.addEventListener('dblclick', Utilities.toggleFullScreen);
 }

@@ -128,9 +128,6 @@ class RandomSoup {
     // settings
     settings = {};
 
-    // utilities class for internal usage
-    utilities;
-
     // draw cycle counter
     counter = 0;
 
@@ -149,9 +146,6 @@ class RandomSoup {
     {
         // merge options and defaults to settings
         this.settings = Object.assign({}, this.defaults, options);
-
-        // utilites class
-        this.utilities = new Utilities();
 
         // if the container element does not exists
         if (!document.getElementById(this.settings.containerElementId)) {
@@ -210,8 +204,8 @@ class RandomSoup {
     createStripeCoordinates() 
     {
         return {
-            left: this.utilities.randomInteger(0, window.innerWidth),
-            maxTop: this.utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight),
+            left: Utilities.randomInteger(0, window.innerWidth),
+            maxTop: Utilities.randomInteger(this.settings.stripeMinHeight, this.settings.stripeMaxHeight),
         }
     }
 
@@ -247,30 +241,30 @@ class RandomSoup {
         // values for new element
         // set element content
         if (this.settings.words.length) {
-            elementContent = this.settings.words[this.utilities.randomInteger(0, this.settings.words.length - 1)];
+            elementContent = this.settings.words[Utilities.randomInteger(0, this.settings.words.length - 1)];
         } else {
-            elementContent = this.utilities.randomString(1, this.settings.characters);
+            elementContent = Utilities.randomString(1, this.settings.characters);
         }
-        fontSize = this.settings.fontSizes[this.utilities.randomInteger(0, this.settings.fontSizes.length - 1)];
-        fontFamily = this.settings.fontFamilies[this.utilities.randomInteger(0, this.settings.fontFamilies.length - 1)];
-        textShadow = this.settings.textShadows[this.utilities.randomInteger(0, this.settings.textShadows.length - 1)];
-        color = this.settings.colors[this.utilities.randomInteger(0, this.settings.colors.length - 1)];
+        fontSize = this.settings.fontSizes[Utilities.randomInteger(0, this.settings.fontSizes.length - 1)];
+        fontFamily = this.settings.fontFamilies[Utilities.randomInteger(0, this.settings.fontFamilies.length - 1)];
+        textShadow = this.settings.textShadows[Utilities.randomInteger(0, this.settings.textShadows.length - 1)];
+        color = this.settings.colors[Utilities.randomInteger(0, this.settings.colors.length - 1)];
 
         // overwrite in special cases ...
-        if (this.utilities.randomInteger(0, this.settings.specialProbability) === 0 && !(this.settings.specialProbability < 0)) {
+        if (Utilities.randomInteger(0, this.settings.specialProbability) === 0 && !(this.settings.specialProbability < 0)) {
             
             // set element content
             if (this.settings.specialWords.length) {
-                elementContent = this.settings.specialWords[this.utilities.randomInteger(0, this.settings.specialWords.length - 1)];
+                elementContent = this.settings.specialWords[Utilities.randomInteger(0, this.settings.specialWords.length - 1)];
             } else {
-                elementContent = this.utilities.randomString(1, this.settings.specialCharacters);
+                elementContent = Utilities.randomString(1, this.settings.specialCharacters);
             }
 
-            fontSize = this.settings.specialFontSizes[this.utilities.randomInteger(0, this.settings.specialFontSizes.length - 1)];;
-            textShadow = this.settings.specialTextShadows[this.utilities.randomInteger(0, this.settings.specialTextShadows.length - 1)];
-            color = this.settings.specialColors[this.utilities.randomInteger(0, this.settings.specialColors.length - 1)];
+            fontSize = this.settings.specialFontSizes[Utilities.randomInteger(0, this.settings.specialFontSizes.length - 1)];;
+            textShadow = this.settings.specialTextShadows[Utilities.randomInteger(0, this.settings.specialTextShadows.length - 1)];
+            color = this.settings.specialColors[Utilities.randomInteger(0, this.settings.specialColors.length - 1)];
             if (this.settings.enableAudio === true && this.settings.specialAudio.length > 0) {
-                var sound = new Audio(this.settings.specialAudio[this.utilities.randomInteger(0, this.settings.specialAudio.length - 1)]);
+                var sound = new Audio(this.settings.specialAudio[Utilities.randomInteger(0, this.settings.specialAudio.length - 1)]);
                 sound.play();
             }
         }
@@ -278,13 +272,13 @@ class RandomSoup {
         // depending on the mode, calculate coordinates of the next character
         switch (this.settings.type) {
             case 'screen':
-                top = this.utilities.randomInteger(0, window.innerHeight - fontSize);
-                left = this.utilities.randomInteger(0, window.innerWidth - fontSize);
+                top = Utilities.randomInteger(0, window.innerHeight - fontSize);
+                left = Utilities.randomInteger(0, window.innerWidth - fontSize);
                 break;
 
             case 'stripe':
-                let stripeCoordinateIndex = this.utilities.randomInteger(0, this.stripeCoordinates.length - 1);
-                top = this.utilities.randomInteger(0, this.stripeCoordinates[stripeCoordinateIndex].maxTop) - fontSize;
+                let stripeCoordinateIndex = Utilities.randomInteger(0, this.stripeCoordinates.length - 1);
+                top = Utilities.randomInteger(0, this.stripeCoordinates[stripeCoordinateIndex].maxTop) - fontSize;
                 left = this.stripeCoordinates[stripeCoordinateIndex].left - fontSize;
                 break;
         }
@@ -301,7 +295,7 @@ class RandomSoup {
             element.style.textShadow = textShadow;
 
         if (this.settings.enableRotation === true) {
-            rotate = this.utilities.randomInteger(-180, 180);
+            rotate = Utilities.randomInteger(-180, 180);
             element.style.transform = 'rotate(' + rotate + 'deg)';
         }
 
